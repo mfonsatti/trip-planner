@@ -1,15 +1,24 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/trip-planner/src",
+  "sourceRoot": "apps/trip-api-gateway/src",
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/trip-planner/tsconfig.app.json"
+    "tsConfigPath": "apps/trip-api-gateway/tsconfig.app.json"
   },
   "monorepo": true,
-  "root": "apps/trip-planner",
+  "root": "apps/trip-api-gateway",
   "projects": {
+    "trip-api-gateway": {
+      "type": "application",
+      "root": "apps/trip-api-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/trip-api-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/trip-api-gateway/tsconfig.app.json"
+      }
+    },
     "trip-search": {
       "type": "application",
       "root": "apps/trip-search",
