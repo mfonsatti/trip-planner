@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { TripSearchService } from './trip-search.service';
 
-@Module({})
+@Module({
+  providers: [TripSearchService]
+})
 export class TripSearchModule {}
