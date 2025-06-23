@@ -2,8 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Trip } from './schemas/trip.schema';
-import { CreateTripDto } from './dto/create-trip.dto';
-import { UpdateTripDto } from './dto/update-trip.dto';
+import { CreateTripDto } from '@app/contracts/trips/create-trip.dto';
+import { UpdateTripDto } from '@app/contracts/trips/update-trip.dto';
 
 @Injectable()
 export class TripsService {
