@@ -8,7 +8,13 @@ describe('TripsController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [TripsController],
-      providers: [TripsService],
+      providers: [
+        TripsService,
+        {
+          provide: 'TRIPS_CLIENT',
+          useValue: { send: jest.fn() }, // mock del microservizio
+        },
+      ],
     }).compile();
 
     controller = module.get<TripsController>(TripsController);
