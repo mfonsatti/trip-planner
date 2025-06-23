@@ -6,7 +6,7 @@ export enum SortBy {
 export class SearchQueryDto {
   origin: string;
   destination: string;
-  sort_by?: SortBy;
+  sort_by: SortBy;
 }
 
 export class TripDto {

@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { SearchQueryDto, TripDto } from './dto/search.dto';
+import { SearchQueryDto, SortBy, TripDto } from './dto/search.dto';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -11,8 +11,8 @@ export class TripSearchService {
   ) {}
 
   async search(query: SearchQueryDto): Promise<TripDto[]> {
-    const baseUrl = this.configService.get<string>("API_BASE_URL");
-    const apiKey = this.configService.get<string>("X_API_KEY");
+    const baseUrl = this.configService.get<string>('API_BASE_URL');
+    const apiKey = this.configService.get<string>('X_API_KEY');
 
     if (!baseUrl || !apiKey) {
       throw new Error(
@@ -20,7 +20,7 @@ export class TripSearchService {
       );
     }
 
-    const { origin, destination } = query;
+    const { origin, destination, sort_by } = query;
 
     const response = await this.httpService.axiosRef.get<TripDto[]>(baseUrl, {
       headers: {
@@ -29,9 +29,16 @@ export class TripSearchService {
       params: {
         origin,
         destination,
+        sort_by
       },
     });
 
-    return response.data;
+    const trips = response.data;
+    
+    return trips.sort((a, b) => {
+      if (sort_by === SortBy.CHEAPEST) return a.cost - b.cost;
+      if (sort_by === SortBy.FASTEST) return a.duration - b.duration;
+      return 0;
+    });
   }
 }
