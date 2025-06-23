@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { SearchQueryDto, SortBy, TripDto } from './dto/search.dto';
+import { SearchQueryDto, SortBy, TripDto } from '@app/contracts/trip-search/trip-search.dto';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()

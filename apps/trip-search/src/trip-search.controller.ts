@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { TripSearchService } from './trip-search.service';
 import { MessagePattern } from '@nestjs/microservices';
-import { SearchQueryDto, TripDto } from './dto/search.dto';
+import { SearchQueryDto, TripDto } from '@app/contracts/trip-search/trip-search.dto';
 
 @Controller()
 export class TripSearchController {

@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { SearchQueryDto } from 'apps/trip-search/src/dto/search.dto';
+import { SearchQueryDto } from '@app/contracts/trip-search/trip-search.dto';
+
 
 @Injectable()
 export class TripSearchService {
