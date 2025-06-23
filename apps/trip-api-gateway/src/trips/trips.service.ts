@@ -15,15 +15,15 @@ export class TripsService {
     return this.tripsClient.send('trips.findAll', {});
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.tripsClient.send('trips.findOne', id);
   }
 
-  update(id: number, updateTripDto: UpdateTripDto) {
+  update(id: string, updateTripDto: UpdateTripDto) {
     return this.tripsClient.send('trips.update', { id, ...updateTripDto });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.tripsClient.send('trips.remove', id);
   }
 }

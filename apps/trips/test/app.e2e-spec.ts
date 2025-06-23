@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { TripCrudModule } from './../src/trip-crud.module';
+import { TripCrudModule } from '../src/trips-app.module';
 
 describe('TripCrudController (e2e)', () => {
   let app: INestApplication;

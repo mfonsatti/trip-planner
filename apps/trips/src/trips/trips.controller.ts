@@ -10,33 +10,34 @@ import {
 import { TripsService } from './trips.service';
 import { CreateTripDto } from './dto/create-trip.dto';
 import { UpdateTripDto } from './dto/update-trip.dto';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller('trips')
 export class TripsController {
   constructor(private readonly tripsService: TripsService) {}
 
-  @Post()
-  create(@Body() dto: CreateTripDto) {
-    return this.tripsService.create(dto);
+  @MessagePattern("trips.create")
+  create(@Payload() createTripDto: CreateTripDto) {
+    return this.tripsService.create(createTripDto);
   }
 
-  @Get()
+  @MessagePattern("trips.findAll")
   findAll() {
     return this.tripsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @MessagePattern("trips.findOne")
+  findOne(@Payload() id: string) {
     return this.tripsService.findOne(id);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() dto: UpdateTripDto) {
-    return this.tripsService.update(id, dto);
+  @MessagePattern("trips.update")
+  update(@Payload() updateTripDto: UpdateTripDto) {
+    return this.tripsService.update(updateTripDto.id, updateTripDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @MessagePattern("trips.remove")
+  remove(@Payload() id: string) {
     return this.tripsService.remove(id);
   }
 }

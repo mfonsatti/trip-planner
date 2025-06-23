@@ -16,7 +16,7 @@ export class Trip extends Document {
   duration: number;
 
   @Prop()
-  description?: string;
+  display_name: string;
 }
 
 export const TripSchema = SchemaFactory.createForClass(Trip);

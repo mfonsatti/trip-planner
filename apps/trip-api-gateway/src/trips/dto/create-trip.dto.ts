@@ -1,8 +1,18 @@
+import { IsNumber, IsString } from "class-validator";
+
 export class CreateTripDto {
+  @IsString()
   origin: string;
+
+  @IsString()
   destination: string;
+
+  @IsNumber()
   cost: number;
+
+  @IsNumber()
   duration: number;
-  type: string;
+
+  @IsString()
   display_name: string;
 }
