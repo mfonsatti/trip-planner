@@ -28,6 +28,24 @@
         "tsConfigPath": "apps/trip-api-gateway/tsconfig.app.json"
       }
     },
+    "trip-crud": {
+      "type": "application",
+      "root": "apps/trip-crud",
+      "entryFile": "main",
+      "sourceRoot": "apps/trip-crud/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/trip-crud/tsconfig.app.json"
+      }
+    },
+    "trip-manager": {
+      "type": "application",
+      "root": "apps/trip-manager",
+      "entryFile": "main",
+      "sourceRoot": "apps/trip-manager/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/trip-manager/tsconfig.app.json"
+      }
+    },
     "trip-search": {
       "type": "application",
       "root": "apps/trip-search",
