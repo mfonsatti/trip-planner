@@ -1,26 +1,35 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Trip } from './schemas/trip.schema';
 import { CreateTripDto } from './dto/create-trip.dto';
 import { UpdateTripDto } from './dto/update-trip.dto';
 
 @Injectable()
 export class TripsService {
+  constructor(@InjectModel(Trip.name) private tripModel: Model<Trip>) {}
+
   create(createTripDto: CreateTripDto) {
-    return 'This action adds a new trip';
+    return this.tripModel.create(createTripDto);
   }
 
   findAll() {
-    return `This action returns all trips`;
+    return this.tripModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} trip`;
+  findOne(id: string) {
+    return this.tripModel.findById(id).exec();
   }
 
-  update(id: number, updateTripDto: UpdateTripDto) {
-    return `This action updates a #${id} trip`;
+  async update(id: string, updateTripDto: UpdateTripDto) {
+    const updated = await this.tripModel.findByIdAndUpdate(id, updateTripDto, { new: true });
+    if (!updated) throw new NotFoundException('Trip not found');
+    return updated;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} trip`;
+  async remove(id: string) {
+    const deleted = await this.tripModel.findByIdAndDelete(id);
+    if (!deleted) throw new NotFoundException('Trip not found');
+    return deleted;
   }
 }

@@ -1,35 +1,42 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { TripsService } from './trips.service';
 import { CreateTripDto } from './dto/create-trip.dto';
 import { UpdateTripDto } from './dto/update-trip.dto';
 
-@Controller()
+@Controller('trips')
 export class TripsController {
   constructor(private readonly tripsService: TripsService) {}
 
-  @MessagePattern('trip.create')
-  create(@Payload() createTripDto: CreateTripDto) {
-    return this.tripsService.create(createTripDto);
+  @Post()
+  create(@Body() dto: CreateTripDto) {
+    return this.tripsService.create(dto);
   }
 
-  @MessagePattern('trip.findAll')
+  @Get()
   findAll() {
     return this.tripsService.findAll();
   }
 
-  @MessagePattern('trip.findOne')
-  findOne(@Payload() id: number) {
+  @Get(':id')
+  findOne(@Param('id') id: string) {
     return this.tripsService.findOne(id);
   }
 
-  @MessagePattern('trip.update')
-  update(@Payload() updateTripDto: UpdateTripDto) {
-    return this.tripsService.update(updateTripDto.id, updateTripDto);
+  @Put(':id')
+  update(@Param('id') id: string, @Body() dto: UpdateTripDto) {
+    return this.tripsService.update(id, dto);
   }
 
-  @MessagePattern('trip.remove')
-  remove(@Payload() id: number) {
+  @Delete(':id')
+  remove(@Param('id') id: string) {
     return this.tripsService.remove(id);
   }
 }
