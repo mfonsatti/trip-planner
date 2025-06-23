@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
 import { CreateTripDto } from './dto/create-trip.dto';
 import { UpdateTripDto } from './dto/update-trip.dto';
-import { ClientProxy } from '@nestjs/microservices';
 
 @Injectable()
 export class TripsService {

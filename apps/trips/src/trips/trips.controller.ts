@@ -1,8 +1,8 @@
-import { Controller } from '@nestjs/common';
-import { TripsService } from './trips.service';
-import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CreateTripDto } from '@app/contracts/trips/create-trip.dto';
 import { UpdateTripDto } from '@app/contracts/trips/update-trip.dto';
+import { Controller } from '@nestjs/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
+import { TripsService } from './trips.service';
 
 @Controller('trips')
 export class TripsController {
