@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-@Schema()
+@Schema({ toJSON: { virtuals: true, versionKey: false } })
 export class Trip extends Document {
   @Prop({ required: true })
   origin: string;

@@ -1,9 +1,17 @@
-export class Trip {
-  origin: string;
-  destination: string;
-  cost: number;
-  duration: number;
-  type: string;
-  id: string;
-  display_name: string;
+import { Expose } from 'class-transformer';
+
+export class TripDto {
+  @Expose() id: string;
+
+  @Expose() origin: string;
+
+  @Expose() destination: string;
+
+  @Expose() cost: number;
+
+  @Expose() duration: number;
+
+  @Expose() type: string;
+
+  @Expose() display_name: string;
 }
