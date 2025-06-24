@@ -64,14 +64,21 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/trips",
+					"raw": "http://localhost:3000/trips/:tripId",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"trips"
+						"trips",
+						":tripId"
+					],
+					"variable": [
+						{
+							"key": "tripId",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -103,7 +110,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"cost\": 9999\n}",
+					"raw": "{\n    \"cost\": 8888\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +118,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/trips/68599ad39ca84f8b4d86b148",
+					"raw": "http://localhost:3000/trips/:tripId",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -119,7 +126,13 @@
 					"port": "3000",
 					"path": [
 						"trips",
-						"68599ad39ca84f8b4d86b148"
+						":tripId"
+					],
+					"variable": [
+						{
+							"key": "tripId",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -131,14 +144,21 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/trips",
+					"raw": "http://localhost:3000/trips/:tripId",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"trips"
+						"trips",
+						":tripId"
+					],
+					"variable": [
+						{
+							"key": "tripId",
+							"value": ""
+						}
 					]
 				}
 			},
