@@ -28,7 +28,16 @@ This repository contains a monorepo implementation of a Trip Planner system buil
 ## Project setup
 
 ```bash
+# Clone the project
+$ git clone git@github.com:mfonsatti/trip-planner.git
+
+# Go to the project
+$ cd trip-planner
+
+# Install dependencies
 $ yarn install
+
+# Rename apps/trip-search/.env.example to .env and fill in API_BASE_URL and X_API_KEY
 ```
 
 ## MongoDB Docker instance
