@@ -5,7 +5,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+  <h1 align="center">Trip Planner Microservices (NestJS + MongoDB)</h1>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -23,7 +23,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This repository contains a monorepo implementation of a Trip Planner system built using NestJS and MongoDB, architected with TCP microservices communication.
 
 ## Project setup
 
@@ -31,68 +31,88 @@
 $ yarn install
 ```
 
+## MongoDB Docker instance
+
+```bash
+ℹ️ DockerHub or Rancher must be running on backgroud
+
+# From the root of the project run the following command
+$ docker compose up -d
+```
+
 ## Compile and run the project
 
 ```bash
-# development
-$ yarn run start
+# run trip-api-gateway on a dedicated terminal shell
+$ nest start trip-api-gateway --watch
 
-# watch mode
+# run trip-search on a dedicated terminal shell
 $ yarn run start:dev
 
-# production mode
+# run trips on a dedicated terminal shell
 $ yarn run start:prod
 ```
 
 ## Run tests
 
 ```bash
-# unit tests
+# tests
 $ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
 ```
 
-## Deployment
+## Structure
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+This project is organized as a **monorepo**, containing the following applications:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Applications
 
-```bash
-$ yarn install -g @nestjs/mau
-$ mau deploy
+* **`trip-api-gateway/`**: Public HTTP interface exposing REST endpoints to clients.
+* **`trip-search/`**: Microservice responsible for filtering and sorting trips based on user queries.
+* **`trips/`**: Microservice responsible for CRUD operations on trip data, persisting to MongoDB.
+
+### Gateway Modules
+
+The gateway orchestrates requests to:
+
+* `/trips` → Forwards to `trips`
+* `/trip-search` → Forwards to `trip-search`
+
+## Features
+
+* CRUD APIs for managing trips (origin, destination, cost, duration, etc.)
+* Trip search with support for `origin`, `destination`, and `sort_by` (e.g., cheapest, fastest)
+* Clean DTO structure with consistent response format (`id` instead of `_id`, and no `__v`)
+* End-to-end and unit test coverage for services and controllers
+
+## Why Microservices with TCP?
+
+* **Decoupling**: Services like search and storage evolve independently
+* **Performance**: TCP is lighter than HTTP, with lower overhead for inter-service communication
+* **Scalability**: Each service can be scaled or deployed separately
+* **Maintainability**: Clear boundaries make codebase easier to understand and extend
+
+## Communication Flow
+
+```text
+Client (REST HTTP)
+     |
+     v
+trip-api-gateway (REST API)
+     |
+     |-- [TCP] --> trips (MongoDB storage)
+     |
+     |-- [TCP] --> trip-search (Filter/Sort logic)
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### API Endpoints
 
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+* `POST /trips`
+* `GET /trips`
+* `GET /trips/:id`
+* `PUT /trips/:id`
+* `DELETE /trips/:id`
+* `GET /trip-search?origin=XXX&destination=YYY&sort_by=cheapest|fastest`
 
 ## Stay in touch
+- Author - [Matteo Fonsatti](https://www.linkedin.com/in/matteo-fonsatti-b02a998a/)
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
