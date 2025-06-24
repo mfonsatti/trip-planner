@@ -42,6 +42,8 @@ $ yarn install
 
 # Rename apps/trip-search/.env.example to .env and fill in API_BASE_URL and X_API_KEY
 ```
+## Video of the Workflow
+[Workflow video](https://youtu.be/Act39Sj0zOw)
 
 ## MongoDB Docker instance
 
