@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsIn, IsOptional, IsString } from 'class-validator';
 
 export enum SortBy {
@@ -61,25 +62,47 @@ export const SupportedIATA = [
 export type IATACode = (typeof SupportedIATA)[number];
 
 export class SearchQueryDto {
+  @ApiProperty({
+    enum: SupportedIATA
+  })
   @IsString()
   @IsIn(SupportedIATA)
   origin: IATACode;
 
+  @ApiProperty({
+    enum: SupportedIATA
+  })
   @IsString()
   @IsIn(SupportedIATA)
   destination: IATACode;
 
+  @ApiProperty({
+    enum: SortBy
+  })
   @IsOptional()
   @IsEnum(SortBy)
   sort_by?: SortBy;
 }
 
 export class TripDto {
+  @ApiProperty()
   origin: string;
+
+  @ApiProperty()
   destination: string;
+
+  @ApiProperty()
   cost: number;
+
+  @ApiProperty()
   duration: number;
+
+  @ApiProperty()
   type: string;
+
+  @ApiProperty()
   id: string;
+
+  @ApiProperty()
   display_name: string;
 }
