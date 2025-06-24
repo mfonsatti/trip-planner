@@ -49,6 +49,12 @@ $ yarn install
 $ docker compose up -d
 ```
 
+## Add PostMan collection
+
+```bash
+# Import into PostMan the file TripPlanner.postman_collection.json
+```
+
 ## Compile and run the project
 
 ```bash
