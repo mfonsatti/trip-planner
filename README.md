@@ -45,8 +45,6 @@ $ yarn install
 ## Video of the Workflow
 [Workflow video](https://youtu.be/Act39Sj0zOw)
 
-https://www.youtube.com/watch?v=Act39Sj0zOw
-
 [![Watch the video](https://img.youtube.com/vi/Act39Sj0zOw/maxresdefault.jpg)](https://youtu.be/Act39Sj0zOw)
 
 ## MongoDB Docker instance
