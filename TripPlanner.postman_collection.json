@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "537b6ffd-ffec-4a50-8e5e-94acfed12fa6",
+		"name": "TripPlanner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4420461"
+	},
+	"item": [
+		{
+			"name": "/trip-search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/trip-search?origin=ATL&destination=AMS&sort_by=fastest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"trip-search"
+					],
+					"query": [
+						{
+							"key": "origin",
+							"value": "ATL"
+						},
+						{
+							"key": "destination",
+							"value": "AMS"
+						},
+						{
+							"key": "sort_by",
+							"value": "fastest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/trips",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/trips",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"trips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/trips/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/trips",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"trips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/trips",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/trips",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"trips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/trips",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cost\": 9999\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/trips/68599ad39ca84f8b4d86b148",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"trips",
+						"68599ad39ca84f8b4d86b148"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/trips",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/trips",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"trips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/provider",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "QflgWnaJwf7Kfx9GQ6U2h6lo1Qef7X0CduHnDAXc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://z0qw1e7jpd.execute-api.eu-west-1.amazonaws.com/default/trips?origin=ATL&destination=AMS",
+					"protocol": "https",
+					"host": [
+						"z0qw1e7jpd",
+						"execute-api",
+						"eu-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"default",
+						"trips"
+					],
+					"query": [
+						{
+							"key": "origin",
+							"value": "ATL"
+						},
+						{
+							"key": "destination",
+							"value": "AMS"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
