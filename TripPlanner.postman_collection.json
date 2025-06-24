@@ -59,7 +59,7 @@
 			"response": []
 		},
 		{
-			"name": "/trips/{id}",
+			"name": "/trips/:tripId",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -104,7 +104,7 @@
 			"response": []
 		},
 		{
-			"name": "/trips",
+			"name": "/trips/:tripId",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -139,7 +139,7 @@
 			"response": []
 		},
 		{
-			"name": "/trips",
+			"name": "/trips/:tripId",
 			"request": {
 				"method": "DELETE",
 				"header": [],
