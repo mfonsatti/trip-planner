@@ -135,6 +135,10 @@ trip-api-gateway (REST API)
 * `DELETE /trips/:id`
 * `GET /trip-search?origin=XXX&destination=YYY&sort_by=cheapest|fastest`
 
+## Swagger Documentation
+[Swagger link](HTTP://localhost:3000/api)
+![Screenshot 2025-06-24 at 15 26 13](https://github.com/user-attachments/assets/d7c3c2c2-3959-4bae-bcd0-cef4c94fddf8)
+
 ## Stay in touch
 - Author - [Matteo Fonsatti](https://www.linkedin.com/in/matteo-fonsatti-b02a998a/)
 
