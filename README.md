@@ -31,6 +31,9 @@ This repository contains a monorepo implementation of a Trip Planner system buil
 # Clone the project
 $ git clone git@github.com:mfonsatti/trip-planner.git
 
+# Install nest: open a terminal and run
+$ npm i -g @nestjs/cli
+
 # Go to the project
 $ cd trip-planner
 
@@ -62,10 +65,10 @@ $ docker compose up -d
 $ nest start trip-api-gateway --watch
 
 # run trip-search on a dedicated terminal shell
-$ yarn run start:dev
+$ nest start trip-search --watch
 
 # run trips on a dedicated terminal shell
-$ yarn run start:prod
+$ nest start trips --watch
 ```
 
 ## Run tests
