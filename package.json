@@ -8,16 +8,11 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/apps/trip-planner/main",
+    "start:trip-api-gateway": "nest start trip-api-gateway --watch",
+    "start:trip-search": "nest start trip-search --watch",
+    "start:trips": "nest start trips --watch",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./apps/trip-planner/test/jest-e2e.json"
+    "test": "jest"
   },
   "dependencies": {
     "@nestjs/axios": "^4.0.0",
